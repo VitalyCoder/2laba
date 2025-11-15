@@ -1,11 +1,11 @@
 <?php
 // ** Настройки базы данных ** //
-define('DB_NAME', 'wordpress');
-define('DB_USER', 'wpuser');
-define('DB_PASSWORD', 'wppass');
-define('DB_HOST', 'db'); // Имя хоста базы данных, используемое в docker-compose.yml
-define('DB_CHARSET', 'utf8');
-define('DB_COLLATE', '');
+define( 'DB_NAME', getenv('MYSQL_DATABASE') ?: 'wordpress' );
+define( 'DB_USER', getenv('MYSQL_USER') ?: 'wpuser' );
+define( 'DB_PASSWORD', getenv('MYSQL_PASSWORD') ?: 'wp_password' );
+define( 'DB_HOST', getenv('WORDPRESS_DB_HOST') ?: 'db:3306' );
+define( 'DB_CHARSET', 'utf8' );
+define( 'DB_COLLATE', '' );
 
 // ** Уникальные ключи и соли ** //
 define('AUTH_KEY',         'поставьте сюда уникальную фразу');
