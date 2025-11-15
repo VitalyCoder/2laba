@@ -2,4 +2,5 @@
 # ...existing code...
 .env
 *.env
+stack.env
 ```
