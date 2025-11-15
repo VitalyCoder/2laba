@@ -1,9 +1,9 @@
 <?php
 // ** Настройки базы данных ** //
 define( 'DB_NAME', getenv('WORDPRESS_DB_NAME') ?: getenv('MYSQL_DATABASE') ?: 'wordpress' );
-define( 'DB_USER', getenv('WORDPRESS_DB_USER') ?: getenv('MYSQL_USER') ?: 'wpuser' );
-define( 'DB_PASSWORD', getenv('WORDPRESS_DB_PASSWORD') ?: getenv('MYSQL_PASSWORD') ?: 'wppass' );
-define( 'DB_HOST', getenv('WORDPRESS_DB_HOST') ?: 'db:3306' );
+define( 'WORDPRESS_DB_USER', getenv('WORDPRESS_DB_USER') ?: getenv('WORDPRESS_DB_USER') ?: 'wpuser' );
+define( 'MYSQL_PASSWORD', getenv('MYSQL_PASSWORD') ?: getenv('MYSQL_PASSWORD') ?: 'wppass' );
+define( 'WORDPRESS_DB_HOST', getenv('WORDPRESS_DB_HOST') ?: 'db:3306' );
 define( 'DB_CHARSET', 'utf8' );
 define( 'DB_COLLATE', '' );
 
