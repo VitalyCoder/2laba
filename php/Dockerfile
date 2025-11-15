@@ -8,6 +8,4 @@ RUN apt-get update && apt-get install -y \
 
 COPY php/php.ini /usr/local/etc/php/
 COPY php/www.conf /usr/local/etc/php-fpm.d/
-COPY wordpress /var/www/html
-
 WORKDIR /var/www/html

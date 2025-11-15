@@ -10,10 +10,6 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      retries: 5
     restart: unless-stopped
 
   php:
@@ -28,18 +24,19 @@ services:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
     volumes:
-      - ${HOST_ROOT:-.}/wordpress:/var/www/html
+      - ./wordpress:/var/www/html
     depends_on:
       - db
     restart: unless-stopped
 
   nginx:
-    image: nginx:stable
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
     ports:
       - "80:80"
     volumes:
-      - ${HOST_ROOT:-.}/nginx/conf.d:/etc/nginx/conf.d:ro
-      - ${HOST_ROOT:-.}/wordpress:/var/www/html:ro
+      - ./wordpress:/var/www/html:ro
     depends_on:
       - php
     restart: unless-stopped
